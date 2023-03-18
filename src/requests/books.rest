@@ -1,2 +1,14 @@
 ### Get all books
 GET http://localhost:9000/books
+
+### Add a new book
+POST http://localhost:9000/books
+content-type: application/json
+
+{
+    "title": "ABC",
+    "author": "BCD",
+    "year": 1234,
+    "publisher": "CDF",
+    "description": "abcdefg"
+}

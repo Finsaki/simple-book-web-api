@@ -19,9 +19,9 @@
   "homepage": "https://github.com/Finsaki/simple-book-web-api#readme",
   "type": "module",
   "dependencies": {
+    "better-sqlite3": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "morgan": "^1.10.0",
-    "sqlite3": "^5.1.6"
+    "morgan": "^1.10.0"
   }
 }

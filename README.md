@@ -1,15 +1,17 @@
-# Testing sqlite3
+# Docs
 
-starting installation
+## Starting installation
 
-> npm i body-parser express sqlite3
+### Install dependencies
 
-> create "quote.db" file
+> npm install
 
-to create a table
+### Run app in development mode
 
-> node .\table.js
+> npm run dev
 
-to start the server
+### Run app in test mode
 
-> node .\app.js
+- uses experimental features, needed for mock data
+
+> npm run test

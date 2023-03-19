@@ -1,10 +1,10 @@
-import express from "express";
+const express = require("express");
 const app = express();
-import cors from "cors";
-import * as config from "./utils/config.js";
-import * as middleware from "./utils/middleware.js";
-import { initDatabase } from "./utils/daoHelper.js";
-import { booksRouter } from "./controllers/books.js";
+const cors = require("cors");
+const config = require("./utils/config");
+const middleware = require("./utils/middleware");
+const { initDatabase } = require("./utils/daoHelper");
+const { booksRouter } = require("./controllers/books");
 
 /**
  * The main connection in backend which asigns specific routes to different routers and sets their cors policies
@@ -39,4 +39,4 @@ app.use("/books", booksRouter);
 //--------API error handling here, errorhandler last-------
 app.use(middleware.unknownEndpoint);
 
-export { app };
+module.exports = { app };

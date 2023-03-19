@@ -1,0 +1,30 @@
+[
+  {
+  "title": "Harry Potter and the Philosophers Stone",
+  "author": "J.K. Rowling",
+  "year": 1997,
+  "publisher": "Bloomsbury (UK)",
+  "description": "A book about a wizard boy"
+  },
+  {
+  "title": "Old Testament",
+  "author": "Various",
+  "year": -165,
+  "publisher": null,
+  "description": "A holy book of Christianity and Jewish faith"
+  },
+  {
+  "title": "The Subtle Knife",
+  "author": "Philip Pullman",
+  "year": 1997,
+  "publisher": "Scholastic Point",
+  "description": null
+  },
+  {
+  "title": "Goosebumps: Beware, the Snowman",
+  "author": "R.L. Stine",
+  "year": 1997,
+  "publisher": "Scholastic Point",
+  "description": null
+  }
+]

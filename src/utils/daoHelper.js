@@ -1,7 +1,6 @@
-import { existsSync, writeFileSync } from "node:fs";
-import Database from "better-sqlite3";
-import { booksTable } from "../models/booksDao.js";
-import { USEMOCKDATA } from "./config.js";
+const { existsSync, writeFileSync } = require("fs");
+const Database = require("better-sqlite3");
+const { booksTable } = require("../models/booksSchema");
 
 let database;
 const filepath = "./books.db";
@@ -15,11 +14,6 @@ const initDatabase = function () {
     writeFileSync(filepath, "", { flag: "wx" });
     database = new Database(filepath);
     dbRun(sqlCreateBooksTable, []);
-
-    if (USEMOCKDATA) {
-      console.log("MOCK");
-      //!!!implement later
-    }
   }
 };
 
@@ -33,4 +27,4 @@ function dbRun(sql, params) {
   return database.prepare(sql).run(params);
 }
 
-export { initDatabase, database, dbRun, dbQuery };
+module.exports = { initDatabase, database, dbRun, dbQuery };

@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { findBooks, addBook } from "../models/booksDao.js";
+const { Router } = require("express");
+const { findBooks, addBook, addTestBooks } = require("../models/booksDao");
 
 const booksRouter = Router();
 
@@ -36,6 +36,21 @@ booksRouter.post("/", (req, res) => {
   }
 });
 
+//Quickly adds books to database to help with testing
+booksRouter.post("/test", async (req, res) => {
+  //request body must contain { "mockBooks": true }
+  if (process.env.NODE_ENV === "test" && req.body.mockBooks === true) {
+    try {
+      const values = await addTestBooks();
+      return res.status(200).json({ "Books Inserted": values });
+    } catch (err) {
+      console.error("Error while importing test data for books: ", err.message);
+      next(err);
+    }
+  }
+  res.status(404).send({ error: "unknown endpoint" });
+});
+
 function validateBook(title, author, year, publisher) {
   if (!(title && author && year)) {
     return { "Bad Request": "Title, Author and Year are required" };
@@ -50,4 +65,4 @@ function validateBook(title, author, year, publisher) {
   return null;
 }
 
-export { booksRouter };
+module.exports = { booksRouter };

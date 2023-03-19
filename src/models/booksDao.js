@@ -1,14 +1,4 @@
-import { dbRun, dbQuery } from "../utils/daoHelper.js";
-
-const booksTable = `books(
-  id          INTEGER PRIMARY KEY,
-  title       TEXT    NOT NULL,
-  author      TEXT    NOT NULL,
-  year        INTEGER NOT NULL,
-  publisher   TEXT,
-  description TEXT,
-  UNIQUE(title, author, year) ON CONFLICT IGNORE
-)`;
+const { dbRun, dbQuery } = require("../utils/daoHelper");
 
 const findBooks = () => {
   console.log("Querying for books from the database");
@@ -27,4 +17,15 @@ const addBook = (book) => {
   return results;
 };
 
-export { booksTable, findBooks, addBook };
+const addTestBooks = async () => {
+  const json = await import("../utils/mockBooks.json"); // import local json file for testing
+  const data = json.default; //.default gets the actual data
+  let totalChanges = [];
+  for (let obj of data) {
+    totalChanges.push(addBook(Object.values(obj)));
+  }
+  const results = totalChanges.reduce((sum, item) => sum + item.changes, 0);
+  return results;
+};
+
+module.exports = { findBooks, addBook, addTestBooks };

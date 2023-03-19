@@ -1,4 +1,4 @@
-import morgan from "morgan";
+const morgan = require("morgan");
 
 //setting up a custom morgan token that shows the request body data when the operation is a POST operation
 morgan.token("response-body", function (req) {
@@ -13,4 +13,4 @@ const unknownEndpoint = (req, res) => {
   res.status(404).send({ error: "unknown endpoint" });
 };
 
-export { morgan, unknownEndpoint };
+module.exports = { morgan, unknownEndpoint };

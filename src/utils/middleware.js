@@ -19,8 +19,10 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === "SqliteError") {
     return response.status(500).send({ error: "database error" });
-  } else if (error.name === "SomeError") {
-    return response.status(400).json({ error: error.message });
+  } else if (error.name === "SyntaxError") {
+    if (error.message.startsWith("Unexpected token")) {
+      return response.status(400).json({ error: error.message });
+    }
   }
 
   next(error);

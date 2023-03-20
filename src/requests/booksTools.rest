@@ -1,0 +1,49 @@
+### You can run manual tests from vscode using
+### https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+######################################
+###TESTING TOOLS######################
+######################################
+
+### CREATE a collection of mock books to database (use NODE_ENV=test mode)
+POST http://localhost:9000/books/test
+content-type: application/json
+
+{
+    "mockBooks": true
+}
+
+######################################
+###PLAYGROUND#########################
+######################################
+
+### GET all books
+GET http://localhost:9000/books
+
+### GET all books with parameters 1
+GET http://localhost:9000/books?author=J.K.%20Rowling
+
+### GET all books with parameters 2
+GET http://localhost:9000/books?author=Various&year=-165
+
+### CREATE a new book
+POST http://localhost:9000/books
+content-type: application/json
+
+{
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "year": 1979,
+    "publisher": "Pan Books",
+    "description": "Originally a radio series"
+}
+
+### CREATE a new book (publisher and description can be omitted)
+POST http://localhost:9000/books
+content-type: application/json
+
+{
+    "title": "The Restaurant at the End of the Universe",
+    "author": "Douglas Adams",
+    "year": 1980
+}

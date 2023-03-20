@@ -7,6 +7,13 @@
   "description": "A book about a wizard boy"
   },
   {
+  "title": "Harry Potter and the Chamber of Secrets",
+  "author": "J.K. Rowling",
+  "year": 1998,
+  "publisher": "Bloomsbury (UK)",
+  "description": "Harry's second year at Hogwarts School of Witchcraft and Wizardry"
+  },
+  {
   "title": "Old Testament",
   "author": "Various",
   "year": -165,

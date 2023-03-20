@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const logger = require("./utils/logger");
 const config = require("./utils/config");
 const middleware = require("./utils/middleware");
 const { initDatabase } = require("./utils/daoHelper");
@@ -13,11 +14,11 @@ const { booksRouter } = require("./controllers/books");
 
 //--------connection to db here-------------
 try {
-  console.log("Program starting...");
+  logger.info("Program starting...");
   initDatabase();
 } catch (err) {
-  console.error(err);
-  console.error(
+  logger.error(err);
+  logger.error(
     "Shutting down because there was an error settinig up the database."
   );
   process.exit(1);
@@ -38,5 +39,6 @@ app.use("/books", booksRouter);
 
 //--------API error handling here, errorhandler last-------
 app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
 
 module.exports = { app };

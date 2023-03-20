@@ -4,4 +4,6 @@ const PORT = "9000";
 //For outside connections, include  URI (for example 'http://localhost:3000')
 const CONNECTIONURI = "";
 
+//!!!add .dot env implementation
+
 module.exports = { PORT, CONNECTIONURI };

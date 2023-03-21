@@ -22,11 +22,17 @@ I used my older and larger project [e-Kuitti](https://github.com/Finsaki/ekuitti
 
 > npm run dev
 
+See [API-structure](#api-structure) for more info on how to use the API.
+
 ### Run app in test mode
 
-- uses experimental features, needed for populating the database from json -data and clearing the database.
-
 > npm run test
+
+- uses experimental features, needed for populating the database from json -data and clearing the database.
+- In test mode you can also run following API calls.
+  - POST http://localhost:9000/tests/books/createBooks (Populates the books table from json-data)
+  - DELETE http://localhost:9000/tests/books/deleteAllBooks (Deletes all content from the books table)
+- See [Testing](#testing) for more info.
 
 ### Optional (Recommended) installations
 

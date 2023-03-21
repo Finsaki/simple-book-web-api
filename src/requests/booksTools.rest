@@ -26,6 +26,12 @@ GET http://localhost:9000/books?author=J.K.%20Rowling
 ### GET all books with parameters 2
 GET http://localhost:9000/books?author=Various&year=-165
 
+### GET a book with id
+GET http://localhost:9000/books/2
+
+### DELETE a book with id
+DELETE http://localhost:9000/books/2
+
 ### CREATE a new book
 POST http://localhost:9000/books
 content-type: application/json

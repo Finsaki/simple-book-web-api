@@ -35,6 +35,8 @@ const deleteBook = (id) => {
   return result;
 };
 
+//----------For testing---------->
+
 //Unlike sqlite operations which dont support async, import returns a promise and needs to be async
 const addTestBooks = async () => {
   logger.debug("Importing books from file to the database");
@@ -49,4 +51,18 @@ const addTestBooks = async () => {
   return results;
 };
 
-module.exports = { findBooks, addBook, addTestBooks, findBook, deleteBook };
+const deleteAllBooks = () => {
+  logger.debug("Deleting all books from the database");
+  const sqlQuery = "DELETE FROM books";
+  const result = dbRun(sqlQuery, []);
+  return result.changes;
+};
+
+module.exports = {
+  findBooks,
+  addBook,
+  addTestBooks,
+  findBook,
+  deleteBook,
+  deleteAllBooks,
+};

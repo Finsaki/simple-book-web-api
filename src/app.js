@@ -6,6 +6,7 @@ const config = require("./utils/config");
 const middleware = require("./utils/middleware");
 const { initDatabase } = require("./utils/daoHelper");
 const { booksRouter } = require("./controllers/books");
+const { testsRouter } = require("./controllers/tests");
 
 /**
  * The main connection in backend which asigns specific routes to different routers and sets their cors policies
@@ -15,6 +16,9 @@ const { booksRouter } = require("./controllers/books");
 //--------connection to db here-------------
 try {
   logger.info("Program starting...");
+  logger.info(
+    "Console info: [METHOD] [URL] [STATUS] [RES-LENGTH] [RES-TIME-ms] [RES-BODY]"
+  );
   initDatabase();
 } catch (err) {
   logger.error(err);
@@ -30,12 +34,15 @@ app.use(cors({ credentials: true, origin: config.CONNECTIONURI }));
 app.use(express.json());
 app.use(
   middleware.morgan(
-    ":method :url :status :res[content-length] :response-time ms :response-body"
+    ":method :url :status :res[content-length] :response-time :response-body"
   )
 );
 
 //--------routers here, (GET, POST, PUT..).---------
 app.use("/books", booksRouter);
+if (process.env.NODE_ENV === "test") {
+  app.use("/tests", testsRouter);
+}
 
 //--------API error handling here, errorhandler last-------
 app.use(middleware.unknownEndpoint);

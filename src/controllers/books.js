@@ -2,9 +2,8 @@ const { Router } = require("express");
 const logger = require("../utils/logger");
 const {
   findBooks,
-  addBook,
-  addTestBooks,
   findBook,
+  addBook,
   deleteBook,
 } = require("../models/booksDao");
 const { validateBook, validateBookParams } = require("../utils/booksHelper");
@@ -68,20 +67,6 @@ booksRouter.delete("/:id", (req, res) => {
   }
   //no json body returned
   return res.status(204).send();
-});
-
-//Quickly adds books to database to help with testing.
-booksRouter.post("/test", async (req, res) => {
-  //request body must contain { "mockBooks": true }
-  if (process.env.NODE_ENV === "test" && req.body.mockBooks === true) {
-    try {
-      const values = await addTestBooks();
-      return res.status(200).json({ "Books Inserted": values });
-    } catch (err) {
-      logger.error(err);
-    }
-  }
-  return res.status(404).send({ error: "unknown endpoint" });
 });
 
 module.exports = { booksRouter };

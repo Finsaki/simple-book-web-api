@@ -282,7 +282,6 @@ GET http://localhost:9000/books?year=1997&publisher=Scholastic%20Point
 #### Get a single book
 GET http://localhost:9000/books/1
 
-
 ### Response
 ### 200 OK
 ### [{ JSON: 1 }]
@@ -292,7 +291,6 @@ GET http://localhost:9000/books/1
 # Try to get a non-existing book
 GET http://localhost:9000/books/0
 
-
 ### Response
 ### 404 Not Found
 
@@ -300,7 +298,6 @@ GET http://localhost:9000/books/0
 
 ### Try to get a book with a non-integer id
 GET http://localhost:9000/books/x
-
 
 ### Response
 ### 404 Not Found

@@ -6,12 +6,10 @@
 ######################################
 
 ### CREATE a collection of mock books to database (use NODE_ENV=test mode)
-POST http://localhost:9000/books/test
-content-type: application/json
+POST http://localhost:9000/tests/books/createBooks
 
-{
-    "mockBooks": true
-}
+### DELETE all books from the database (use NODE_ENV=test mode)
+DELETE http://localhost:9000/tests/books/deleteAllBooks
 
 ######################################
 ###PLAYGROUND#########################

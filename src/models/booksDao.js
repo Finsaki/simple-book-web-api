@@ -40,7 +40,11 @@ const deleteBook = (id) => {
 //Unlike sqlite operations which dont support async, import returns a promise and needs to be async
 const addTestBooks = async () => {
   logger.debug("Importing books from file to the database");
-  const json = await import("../utils/mockBooks.json"); // import local json file for testing
+  const json = await import("../utils/mockBooks.json", {
+    assert: {
+      type: "json",
+    },
+  }); // import local json file for testing
   const data = json.default; //.default gets the actual data
   let totalChanges = [];
   for (let obj of data) {

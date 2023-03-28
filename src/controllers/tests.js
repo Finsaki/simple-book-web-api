@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { addTestBooks, deleteAllBooks } = require("../models/booksDao");
+const logger = require("../utils/logger");
 
 const testsRouter = Router();
 

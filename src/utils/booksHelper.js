@@ -35,18 +35,17 @@ function validateBookParams(queryObject) {
 }
 
 function createBookParamsSql(paramsArray) {
-  let queryString = "";
-
-  if (paramsArray.length > 0) {
-    queryString += " WHERE";
-    while (paramsArray.length > 0) {
-      queryString += paramsArray.shift();
-      if (paramsArray.length > 0) {
-        queryString += " AND";
-      }
-    }
+  if (paramsArray.length < 1) {
+    return "";
   }
 
+  let queryString = " WHERE";
+  while (paramsArray.length > 0) {
+    queryString += paramsArray.shift();
+    if (paramsArray.length > 0) {
+      queryString += " AND";
+    }
+  }
   return queryString;
 }
 
